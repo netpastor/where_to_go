@@ -14,3 +14,20 @@ class Place(models.Model):
 
     def __str__(self):
         return f'{self.pk} {self.title}'
+
+
+def place_image_path(instance, filename):
+    return 'place_{0}/{1}'.format(instance.place.id, filename)
+
+
+class PlaceImage(models.Model):
+    place = models.ForeignKey(Place, on_delete=models.CASCADE, verbose_name='images')
+    image = models.ImageField(upload_to=place_image_path)
+    order = models.IntegerField()
+
+    class Meta:
+        verbose_name = 'фотография места'
+        verbose_name_plural = 'фотографии места'
+
+    def __str__(self):
+        return f'{self.order} {self.place.title}'
