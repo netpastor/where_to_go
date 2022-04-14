@@ -1,6 +1,5 @@
-import json
-from django.http import HttpResponse
-from django.views.generic import ListView, TemplateView, DetailView
+from django.http import JsonResponse
+from django.views.generic import TemplateView
 from django.views.generic.detail import SingleObjectMixin, BaseDetailView
 
 from .models import Place
@@ -31,6 +30,6 @@ class PlaceView(BaseDetailView, SingleObjectMixin):
 
     def get(self, request, *args, **kwargs):
         place = self.get_object()
-        return HttpResponse(json.dumps(place.serialize_details()))
+        return JsonResponse(place.serialize_details())
 
 

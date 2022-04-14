@@ -54,8 +54,8 @@ def place_image_path(instance, filename):
 
 class PlaceImage(models.Model):
     place = models.ForeignKey(Place, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to=place_image_path)
-    order_number = models.IntegerField(blank=True, null=True)
+    image = models.ImageField(upload_to=place_image_path, verbose_name='картинка')
+    order_number = models.IntegerField(blank=True, null=True, verbose_name='позиция')
 
     class Meta:
         verbose_name = 'фотография места'
