@@ -1,10 +1,12 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
+from adminsortable2.admin import SortableInlineAdminMixin, SortableAdminBase
+
 from .models import Place, PlaceImage
 
 
-class PlaceImageInlineAdmin(admin.TabularInline):
+class PlaceImageInlineAdmin(SortableInlineAdminMixin, admin.TabularInline):
     model = PlaceImage
     readonly_fields = ('preview',)
 
@@ -18,7 +20,7 @@ class PlaceImageInlineAdmin(admin.TabularInline):
         )
 
 
-class PlaceAdmin(admin.ModelAdmin):
+class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
     list_display = ('title',)
     inlines = (PlaceImageInlineAdmin,)
     prepopulated_fields = {"slug": ("title",)}
