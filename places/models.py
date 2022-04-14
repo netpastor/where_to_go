@@ -2,12 +2,14 @@ from django.db import models
 from django.db.models import Max
 from django.urls import reverse
 
+from tinymce.models import HTMLField
+
 
 class Place(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(blank=True)
-    description_short = models.TextField()
-    description_long = models.TextField()
+    description_short = HTMLField()
+    description_long = HTMLField()
     coord_lng = models.CharField(max_length=20)
     coord_lat = models.CharField(max_length=20)
 
