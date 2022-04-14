@@ -6,12 +6,12 @@ from tinymce.models import HTMLField
 
 
 class Place(models.Model):
-    title = models.CharField(max_length=200)
-    slug = models.SlugField(blank=True)
-    description_short = HTMLField()
-    description_long = HTMLField()
-    coord_lng = models.CharField(max_length=20)
-    coord_lat = models.CharField(max_length=20)
+    title = models.CharField(max_length=200, verbose_name='заголовок')
+    slug = models.SlugField(blank=True, verbose_name='slug')
+    description_short = HTMLField(verbose_name='краткое описание')
+    description_long = HTMLField(verbose_name='полное описание')
+    coord_lng = models.CharField(max_length=20, verbose_name='долгота')
+    coord_lat = models.CharField(max_length=20, verbose_name='широта')
 
     class Meta:
         verbose_name = 'место'

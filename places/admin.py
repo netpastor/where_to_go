@@ -1,7 +1,6 @@
+from adminsortable2.admin import SortableInlineAdminMixin, SortableAdminBase
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-
-from adminsortable2.admin import SortableInlineAdminMixin, SortableAdminBase
 
 from .models import Place, PlaceImage
 
@@ -12,7 +11,7 @@ class PlaceImageInlineAdmin(SortableInlineAdminMixin, admin.TabularInline):
 
     def preview(self, obj):
         return mark_safe(
-            '<img src="{url}" width="{width}" height={height} />'.format(
+            '<img src="{url}" width="{width}" height="{height}" />'.format(
                 url=obj.image.url,
                 width='auto',
                 height='200px',

@@ -24,7 +24,7 @@ class IndexView(TemplateView):
         return self.render_to_response(context)
 
 
-class PlaceView(BaseDetailView, SingleObjectMixin):
+class PlaceDetailView(BaseDetailView, SingleObjectMixin):
     http_method_names = ['get', ]
     model = Place
 
